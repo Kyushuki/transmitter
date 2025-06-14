@@ -1,4 +1,9 @@
 class Coder():
+    """
+    Класс кодировки алфавита в биты с windows-1251
+
+    Является классом поумолчанию
+    """
     def __init__(self):
         pass
     def encode(self,mess: str) -> str:

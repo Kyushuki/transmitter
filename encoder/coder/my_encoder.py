@@ -20,9 +20,9 @@ class MyEncoder(Coder):
 
         Параметры:
 
-        mess: str
+        mess: string
 
-        Возвращает - str
+        Возвращает - string
         """
         res = ""
         for i in mess:

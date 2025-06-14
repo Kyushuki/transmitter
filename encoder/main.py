@@ -1,11 +1,11 @@
 from input import Input
-from coder.my_encoder import MyEncoder
-# from coder.coder import Coder
+# from coder.my_encoder import MyEncoder
+from coder.coder import Coder
 from modulate import QPSKModulate
 
 key = Input()
-coder = MyEncoder()
-# coder = Coder()
+# coder = MyEncoder()
+coder = Coder()
 modulator = QPSKModulate()
 
 mess = key.input()

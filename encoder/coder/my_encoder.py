@@ -1,16 +1,33 @@
 import json 
 import os 
+from coder import Coder
 
+file = 'my_code.json'
 
-nameCode = 'my_code.json'
-dir = os.path.dirname(os.path.abspath(__file__))
-file = os.path.join(dir,nameCode)
 with open(file, 'r', encoding='UTF-8') as f:
     code = json.load(f)
 
-def encode(mess: str):
-    res = ""
-    for i in mess:
-        res+= code[i]
-    return res 
-print(encode("привет! как дела?"))
+class MyEncoder(Coder):
+    def encode(self,mess: str) -> str:
+        """
+        Метод принимает на вход текстовое сообщение и кодирует его согласно кодировке заданной в my_code.json
+
+        ВНИМАНИЕ:
+
+        Кодировка по умолчанию не предполагает заглавных букв и многих знаков препинания
+
+        Если символа нет в кодировке, он будет заменён на "#" = "111111"
+
+        Параметры:
+
+        mess: str
+
+        Возвращает - str
+        """
+        res = ""
+        for i in mess:
+            try:
+                res+= code[i]
+            except KeyError:
+                res+=code["#"]
+        return res 

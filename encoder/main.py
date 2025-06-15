@@ -1,20 +1,30 @@
 from input import Input
-from coder.my_encoder import MyEncoder
-# from coder.coder import Coder
 from modulate import QPSKModulate
-import json
+from packet import Packet
 
-file = 'my_code.json'
-
-with open(file, 'r', encoding='UTF-8') as f:
-    code = json.load(f)
 
 key = Input()
-coder = MyEncoder(code)
-# coder = Coder()
-modulator = QPSKModulate()
 
-mess = key.input()
+
+modulator = QPSKModulate()
+packet = Packet()
+
+mess, c = key.input()
+if c == "mycode":
+    import json
+
+    file = 'my_code.json'
+
+    with open(file, 'r', encoding='UTF-8') as f:
+        code = json.load(f)
+
+    from coder.my_encoder import MyEncoder
+    coder = MyEncoder(code)
+elif c == "basic":
+    from coder.coder import Coder
+    coder = Coder()
+
 newMess = coder.encode(mess)
-modulateMess = modulator.modulate(newMess)
-print(f'{newMess} \n {modulateMess}')
+packeded = packet.pack(newMess, c)
+modulateMess = modulator.modulate(packeded)
+print(f'{newMess}\n{packeded}\n{modulateMess}')

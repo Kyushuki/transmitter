@@ -1,16 +1,16 @@
-import json 
-import os 
 from coder.coder import Coder
-
-file = 'my_code.json'
-
-with open(file, 'r', encoding='UTF-8') as f:
-    code = json.load(f)
 
 class MyEncoder(Coder):
     """
     Класс реализует кодировку сообщений в собственной кодировке
+
+    Параметры:
+
+    alphabet: dict - словарь с необходимой кодировкой вида (символ-код)
     """
+    def __init__(self,alphabet: dict):
+        self.code = alphabet
+
     def encode(self,mess: str) -> str:
         """
         Метод принимает на вход текстовое сообщение и кодирует его согласно кодировке собственной в my_code.json
@@ -30,7 +30,7 @@ class MyEncoder(Coder):
         res = ""
         for i in mess:
             try:
-                res+= code[i]
+                res+= self.code[i]
             except KeyError:
-                res+=code["#"]
+                res+=self.code["#"]
         return res 

@@ -27,4 +27,4 @@ elif c == "basic":
 newMess = coder.encode(mess)
 packeded = packet.pack(newMess, c)
 modulateMess = modulator.modulate(packeded)
-print(f'{newMess}\n{packeded}\n{modulateMess}')
+print(f'Закодированное сообщение:\n{newMess}\nУпакованное:\n{packeded}\nМодулированное:\n{modulateMess}')

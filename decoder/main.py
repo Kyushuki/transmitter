@@ -25,4 +25,4 @@ elif c == "mycode":
     decoder = MyDecoder(code)
 
 mess_decoded = decoder.decode(dpacket)
-print(f'{dem_mess}\n{dpacket}\n{mess_decoded}')
+print(f'Демодулированное\n{dem_mess}\nОтброшены пакетные части\n{dpacket}\nДекодированное сообщение\n{mess_decoded}')

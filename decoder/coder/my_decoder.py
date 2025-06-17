@@ -1,6 +1,4 @@
-from coder.decoder import Decoder
-
-class MyDecoder(Decoder):
+class MyDecoder():
     """
     Класс декодера для собственного кода
 

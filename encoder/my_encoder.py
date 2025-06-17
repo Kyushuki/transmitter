@@ -1,4 +1,4 @@
-from coder.coder import Coder
+from coder import Coder
 
 class MyEncoder(Coder):
     """

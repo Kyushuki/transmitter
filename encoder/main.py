@@ -18,10 +18,10 @@ if c == "mycode":
     with open(file, 'r', encoding='UTF-8') as f:
         code = json.load(f)
 
-    from my_encoder import MyEncoder
+    from coder.my_encoder import MyEncoder
     coder = MyEncoder(code)
 elif c == "basic":
-    from coder import Coder
+    from coder.coder import Coder
     coder = Coder()
 
 newMess = coder.encode(mess)

@@ -1,6 +1,4 @@
-from coder import Coder
-
-class MyEncoder(Coder):
+class MyEncoder():
     """
     Класс реализует кодировку сообщений в собственной кодировке
 

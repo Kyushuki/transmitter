@@ -6,7 +6,7 @@ modulator = Demodulate()
 
 depacket = DePacket()
 
-mess=[]
+mess=[-1j, -1j, 1j, (-1+0j), -1j, 1j, (-1+0j), (-1+0j), -1j, 1j, -1j, (-1+0j), (1+0j), 1j, -1j, (-1+0j), -1j, 1j, (-1+0j), (-1+0j), -1j, 1j, (1+0j), (-1+0j), -1j, 1j, (-1+0j), (-1+0j), -1j, (-1+0j), 1j, (-1+0j), -1j, 1j, (-1+0j), (-1+0j), -1j, 1j, -1j, (-1+0j), (1+0j), 1j, -1j, (-1+0j), -1j, 1j, (-1+0j)]
 dem_mess = modulator.demodulate(mess)
 dpacket, c = depacket.depacket(dem_mess)
 

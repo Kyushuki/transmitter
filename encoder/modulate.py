@@ -1,13 +1,12 @@
-import math as m
 class QPSKModulate():
     """
     Класс модуляции QPSK
     """
     map = {
-        "00": complex(0,1),
-        "01": complex(-1,0),
-        "10": complex(0,-1),
-        "11": complex(1,0),
+        "00": complex(0, 1),
+        "01": complex(-1, 0),
+        "10": complex(0, -1),
+        "11": complex(1, 0),
     }
 
     def modulate(self, mess: str) -> list[complex]:
@@ -21,7 +20,6 @@ class QPSKModulate():
         Возвращает - list[complex] список комплексных чисел
         """
         res = []
-        for i in range(0,len(mess),2):
-            res.append(self.map[mess[i:i+2]])
+        for i in range(len(mess), 2):
+            res.append(self.map[mess[i:i + 2]])
         return res
-

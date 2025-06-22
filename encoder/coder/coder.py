@@ -4,9 +4,7 @@ class Coder():
 
     Является классом поумолчанию
     """
-    def __init__(self):
-        pass
-    def encode(self,mess: str) -> str:
+    def encode(self, mess: str) -> str:
         """
         Метод использует windows-1251 для кодировки "алфавит-биты"
 

@@ -6,10 +6,10 @@ class MyEncoder():
 
     alphabet: dict - словарь с необходимой кодировкой вида (символ-код)
     """
-    def __init__(self,alphabet: dict):
+    def __init__(self, alphabet: dict):
         self.code = alphabet
 
-    def encode(self,mess: str) -> str:
+    def encode(self, mess: str) -> str:
         """
         Метод принимает на вход текстовое сообщение и кодирует его согласно кодировке собственной в my_code.json
 
@@ -28,7 +28,7 @@ class MyEncoder():
         res = ""
         for i in mess:
             try:
-                res+= self.code[i]
+                res += self.code[i]
             except KeyError:
-                res+=self.code["#"]
-        return res 
+                res += self.code["#"]
+        return res

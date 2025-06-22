@@ -8,16 +8,16 @@ class Input():
         """
         while True:
             code = input("Введите желаемую кодировку (basic или mycode): ")
-            if code.strip() and (code.strip()== "basic" or code.strip()=="mycode"):
+            if code.strip() and (code.strip() == "basic" or code.strip() == "mycode"):
                 break
-            elif code.strip() and (code.strip()!= "basic" or code.strip()!="mycode"):
+            elif code.strip() and (code.strip() != "basic" or code.strip() != "mycode"):
                 print("Ошибка: введите правильную кодировку!")
             else:
-                print("Ошибка: поле не может быть пустым!") 
+                print("Ошибка: поле не может быть пустым!")
         while True:
             mess = input("Введите сообщение: ")
             if mess.strip():
                 break
             else:
-                print("Ошибка: сообщение не может быть пустым!") 
+                print("Ошибка: сообщение не может быть пустым!")
         return mess, code.strip()

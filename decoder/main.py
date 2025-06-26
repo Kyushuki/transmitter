@@ -1,28 +1,30 @@
 from demodulate import Demodulate
 from depacket import DePacket
 
-modulator = Demodulate()
 
+if __name__ == "__main__":
 
-depacket = DePacket()
+    modulator = Demodulate()
 
-mess = []
-dem_mess = modulator.demodulate(mess)
-dpacket, c = depacket.depacket(dem_mess)
+    depacket = DePacket()
 
-if c == "basic":
-    from coder.decoder import Decoder
-    decoder = Decoder()
-elif c == "mycode":
-    from coder.my_decoder import MyDecoder
-    import json
+    mess = []
+    dem_mess = modulator.demodulate_qpsk(mess)
+    dpacket, c = depacket.depacket(dem_mess)
 
-    file = 'my_code.json'
+    if c == "basic":
+        from coder.decoder import Decoder
+        decoder = Decoder()
+    elif c == "mycode":
+        from coder.my_decoder import MyDecoder
+        import json
 
-    with open(file, 'r', encoding='UTF-8') as f:
-        code = json.load(f)
+        file = 'my_code.json'
 
-    decoder = MyDecoder(code)
+        with open(file, 'r', encoding='UTF-8') as f:
+            code = json.load(f)
 
-mess_decoded = decoder.decode(dpacket)
-print(f'Демодулированное\n{dem_mess}\nОтброшены пакетные части\n{dpacket}\nДекодированное сообщение\n{mess_decoded}')
+        decoder = MyDecoder(code)
+
+    mess_decoded = decoder.decode(dpacket)
+    print(f'Демодулированное\n{dem_mess}\nОтброшены пакетные части\n{dpacket}\nДекодированное сообщение\n{mess_decoded}')

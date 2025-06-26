@@ -1,7 +1,7 @@
-from encoder.modulate import QPSKModulate
+from encoder.modulate import Modulate
 from decoder.demodulate import Demodulate
 
-m = QPSKModulate()
+m = Modulate()
 d = Demodulate()
 
 t = {
@@ -12,9 +12,9 @@ t = {
 
 def test_modulate():
     for k, v in t.items():
-        assert m.modulate(k) == v
+        assert m.modulate_qpsk(k) == v
 
 
 def test_demodulate():
     for k, v in t.items():
-        assert d.demodulate(v) == k
+        assert d.demodulate_qpsk(v) == k

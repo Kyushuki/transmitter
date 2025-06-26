@@ -1,4 +1,4 @@
-class QPSKModulate():
+class Modulate():
     """
     Класс модуляции QPSK
     """
@@ -9,7 +9,7 @@ class QPSKModulate():
         "11": complex(1, 0),
     }
 
-    def modulate(self, mess: str) -> list[complex]:
+    def modulate_qpsk(self, mess: str) -> list[complex]:
         """
         Метод модулирует битовое сообщение в комплексные числа для передачи сигнала
 

@@ -1,30 +1,31 @@
 from input import Input
-from modulate import QPSKModulate
+from modulate import Modulate
 from packet import Packet
 
+if __name__ == "__main__":
+    key = Input()
 
-key = Input()
+    modulator = Modulate()
+    packet = Packet()
 
+    mess, c = key.input()
 
-modulator = QPSKModulate()
-packet = Packet()
+    if c == "mycode":
+        import json
 
-mess, c = key.input()
-if c == "mycode":
-    import json
+        file = 'my_code.json'
 
-    file = 'my_code.json'
+        with open(file, 'r', encoding='UTF-8') as f:
+            code = json.load(f)
 
-    with open(file, 'r', encoding='UTF-8') as f:
-        code = json.load(f)
+        from coder.my_encoder import MyEncoder
+        coder = MyEncoder(code)
 
-    from coder.my_encoder import MyEncoder
-    coder = MyEncoder(code)
-elif c == "basic":
-    from coder.coder import Coder
-    coder = Coder()
+    elif c == "basic":
+        from coder.coder import Coder
+        coder = Coder()
 
-newMess = coder.encode(mess)
-packeded = packet.pack(newMess, c)
-modulateMess = modulator.modulate(packeded)
-print(f'Закодированное сообщение:\n{newMess}\nУпакованное:\n{packeded}\nМодулированное:\n{modulateMess}')
+    newMess = coder.encode(mess)
+    packeded = packet.pack(newMess, c)
+    modulateMess = modulator.modulate_qpsk(packeded)
+    print(f'Закодированное сообщение:\n{newMess}\nУпакованное:\n{packeded}\nМодулированное:\n{modulateMess}')

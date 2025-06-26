@@ -9,7 +9,7 @@ class Demodulate():
         "11": complex(1, 0),
     }
 
-    def demodulate(self, mess: list[complex]) -> str:
+    def demodulate_qpsk(self, mess: list[complex]) -> str:
         """
         Метод превращает комплексные числа в строку битов
 

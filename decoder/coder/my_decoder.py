@@ -22,10 +22,10 @@ class MyDecoder():
         Возвращает декодированное сообщение string
         """
         res = ""
-        for i in range(len(mess), 6):
+        for i in range(0, len(mess), 6):
             part = mess[i:i + 6]
             if part in self.rCode:
-                res + self.rCode[part]
+                res += self.rCode[part]
             else:
                 res += "#"
         return res

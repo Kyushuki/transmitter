@@ -20,6 +20,6 @@ class QPSKModulate():
         Возвращает - list[complex] список комплексных чисел
         """
         res = []
-        for i in range(len(mess), 2):
+        for i in range(0, len(mess), 2):
             res.append(self.map[mess[i:i + 2]])
         return res

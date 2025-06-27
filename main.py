@@ -3,6 +3,7 @@ from decoder.demodulate import Demodulate
 from encoder.input import Input
 from encoder.packet import Packet
 from decoder.depacket import DePacket
+import numpy as np
 
 
 class Model:
@@ -24,8 +25,10 @@ class Model:
             code = json.load(f)
         return code
 
-    def start_signal_phase(self):
-        pass
+    def start_signal_phase(self) -> complex:
+        phi = np.random.uniform(0, 2 * np.pi)
+        phase = np.exp(1j * phi)
+        return complex(phase)
 
     def emitter(self) -> list[complex]:
         mess, self.coder = self.input.input()
@@ -40,6 +43,9 @@ class Model:
         byte_mess = self.coder.encode(mess)
         packed_mess = self.packing.pack(byte_mess, code_for_packet)
         complex_mess = self.modulator.modulate_qpsk(packed_mess)
+
+        r = self.start_signal_phase()
+        complex_mess = [c * r for c in complex_mess]
         return complex_mess
 
     def receiver(self, complex_mess: list[complex]):
@@ -62,3 +68,7 @@ if __name__ == "__main__":
     print(a)
     b = model.receiver(a)
     print(b)
+    print(model.start_signal_phase())
+    print(model.start_signal_phase())
+    print(model.start_signal_phase())
+    print(model.start_signal_phase())

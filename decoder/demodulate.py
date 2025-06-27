@@ -27,13 +27,20 @@ class Demodulate():
         z = mess[0]
         a = math.atan2(z.imag, z.real)
         b = math.atan2(z0.imag, z0.real)
+        beta = np.abs(z / z0)
+        # print(beta)
         phi = a - b
+        # print(mess)
         if abs(phi) >= 1e-6:
             r = complex(np.exp(-1j * phi))
             mess = [c * r for c in mess]
+            # print(phi)
+        mess = [c / beta for c in mess]
         res = []
+        print(f"Так выглядит перед модуляцией: \n{mess}")
         for i in mess:
             for key, value in self.map.items():
                 if i == value:
                     res += key
+        print(''.join(res))
         return ''.join(res)

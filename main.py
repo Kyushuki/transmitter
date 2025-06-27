@@ -4,6 +4,7 @@ from encoder.input import Input
 from encoder.packet import Packet
 from decoder.depacket import DePacket
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 class Model:
@@ -16,6 +17,7 @@ class Model:
         self.depacking = DePacket()
         self.coder = ""
         self.file = 'my_code.json'
+        self.beta = 0.5  # коэфф затухания
 
     def import_coder(self, file: str) -> dict:
         # file - название файла .json
@@ -45,7 +47,13 @@ class Model:
         complex_mess = self.modulator.modulate_qpsk(packed_mess)
 
         r = self.start_signal_phase()
+        plt.scatter(np.array(complex_mess).real, np.array(complex_mess).imag, color='violet')
         complex_mess = [c * r for c in complex_mess]
+        plt.scatter(np.array(complex_mess).real, np.array(complex_mess).imag, color='red')
+        complex_mess = [c * self.beta for c in complex_mess]
+        plt.scatter(np.array(complex_mess).real, np.array(complex_mess).imag, color='blue')
+        plt.grid(True)
+        plt.show()
         return complex_mess
 
     def receiver(self, complex_mess: list[complex]):
@@ -68,7 +76,3 @@ if __name__ == "__main__":
     print(a)
     b = model.receiver(a)
     print(b)
-    print(model.start_signal_phase())
-    print(model.start_signal_phase())
-    print(model.start_signal_phase())
-    print(model.start_signal_phase())

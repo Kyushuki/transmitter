@@ -15,4 +15,5 @@ class DePacket():
             code = res[0:2]
             res = res[2:]
             return res, self.codes[code]
+        # return mess[6:], "basic"
         pass

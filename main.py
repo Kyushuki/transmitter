@@ -74,10 +74,12 @@ class Model:
                 if counter >= 100:
                     return "ОШИБКА, неудалось расшифровать сообщение"
         if coder == "mycode":
+            print("Используемая кодировка для расшифровки - mycode\n")
             from decoder.coder.my_decoder import MyDecoder
             code = self.import_coder(self.file)
             coder = MyDecoder(code)
         else:
+            print("Используемая кодировка для расшифровки - basic\n")
             from decoder.coder.decoder import Decoder
             coder = Decoder()
         mess = coder.decode(byte_mess)

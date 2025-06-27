@@ -30,5 +30,8 @@ class MyEncoder():
             try:
                 res += self.code[i]
             except KeyError:
-                res += self.code["#"]
+                if "#" in self.code:
+                    res += self.code["#"]
+                else:
+                    res += self.code[next(reversed(self.code))]
         return res

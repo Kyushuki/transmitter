@@ -10,6 +10,7 @@ class MyDecoder():
     """
     def __init__(self, code: dict):
         self.rCode = {v: k for k, v in code.items()}
+        self.k = len(next(iter(self.rCode)))
 
     def decode(self, mess: str) -> str:
         """
@@ -22,8 +23,8 @@ class MyDecoder():
         Возвращает декодированное сообщение string
         """
         res = ""
-        for i in range(0, len(mess), 6):
-            part = mess[i:i + 6]
+        for i in range(0, len(mess), self.k):
+            part = mess[i:i + self.k]
             if part in self.rCode:
                 res += self.rCode[part]
             else:

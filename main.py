@@ -9,17 +9,17 @@ import matplotlib.pyplot as plt
 
 class Model:
 
-    def __init__(self):
+    def __init__(self, file: str, beta: float, mean: float, sigma: float):
         self.modulator = Modulate()
         self.demodulator = Demodulate()
         self.input = Input()
         self.packing = Packet()
         self.depacking = DePacket()
         self.coder = ""
-        self.file = 'my_code.json'
-        self.beta = 0.5  # коэфф затухания
-        self.mean = 0
-        self.sigma = 0.1
+        self.file = file
+        self.beta = beta  # коэфф затухания
+        self.mean = mean
+        self.sigma = sigma
 
     def import_coder(self, file: str) -> dict:
         # file - название файла .json
@@ -87,7 +87,7 @@ class Model:
 
 
 if __name__ == "__main__":
-    model = Model()
+    model = Model('my_code.json', 0.5, 0, 0.1)
     a = model.emitter()
     print(a)
     b = model.receiver(a)

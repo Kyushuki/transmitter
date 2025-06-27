@@ -7,13 +7,14 @@ class Input():
         Метод для ввода сообщений
         """
         while True:
-            code = input("Введите желаемую кодировку (basic или mycode): ")
+            code = input("Введите желаемую кодировку (basic или mycode) \nИли нажмите ENTER для использования кодировки по-умолчанию(basic): ")
             if code.strip() and (code.strip() == "basic" or code.strip() == "mycode"):
                 break
             elif code.strip() and (code.strip() != "basic" or code.strip() != "mycode"):
                 print("Ошибка: введите правильную кодировку!")
             else:
-                print("Ошибка: поле не может быть пустым!")
+                code = "basic"
+                break
         while True:
             mess = input("Введите сообщение: ")
             if mess.strip():

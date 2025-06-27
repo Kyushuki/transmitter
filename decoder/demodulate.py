@@ -39,8 +39,12 @@ class Demodulate():
         res = []
         print(f"Так выглядит перед модуляцией: \n{mess}")
         for i in mess:
+            min_dist = float('inf')
+            k = ""
             for key, value in self.map.items():
-                if i == value:
-                    res += key
+                if abs(i - value) < min_dist:
+                    min_dist = abs(i - value)
+                    k = key
+            res += k
         print(''.join(res))
         return ''.join(res)
